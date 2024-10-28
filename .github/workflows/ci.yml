@@ -27,26 +27,30 @@ jobs:
       with:
         dotnet-version: '8.0.x'  # Define a versão do .NET Core usada
 
-    # 3. Compilar o projeto
+    # 3. Restaurar pacotes
+    - name: Restore project dependencies
+      run: dotnet restore ./AuthApi/AuthApi.sln
+
+    # 4. Compilar o projeto
     - name: Build project
-      run: dotnet build AuthApi.sln --configuration Release
+      run: dotnet build ./AuthApi/AuthApi.sln -c Release
 
-    # 4. Executar testes (opcional)
+    # 5. Executar testes
     - name: Run tests
-      run: dotnet test AuthApi.sln --no-build --verbosity normal
+      run: dotnet test ./AuthApi/AuthApi.sln --verbosity normal
 
-    # 5. Configurar o Docker Buildx
+    # 6. Configurar o Docker Buildx
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
-    # 6. Fazer login no Docker Hub usando variáveis de ambiente
+    # 7. Fazer login no Docker Hub usando variáveis de ambiente
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_USERNAME }}   # Usando o segredo DOCKER_USERNAME
         password: ${{ secrets.DOCKER_PASSWORD }}   # Usando o segredo DOCKER_PASSWORD
 
-    # 7. Build da imagem Docker e push para o Docker Hub
+    # 8. Build da imagem Docker e push para o Docker Hub
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
@@ -55,7 +59,7 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/gerenciamentoapis:latest   # Usando o segredo DOCKER_USERNAME para definir a imagem
         push: true  # Faz o push para o Docker Hub
 
-    # 8. Executar a imagem Docker para build e testes (opcional)
+    # 9. Executar a imagem Docker para build e testes (opcional)
     - name: Run Docker container
       run: |
         docker run ${{ secrets.DOCKER_USERNAME }}/gerenciamentoapis:latest
