@@ -29,7 +29,7 @@ jobs:
 
     # 3. Compilar o projeto
     - name: Build project
-      run:  dotnet restore ./AuthApi/AuthApi.sln --configuration Release
+      run:  dotnet restore ./AuthApi/AuthApi.sln -c Release
 
     # 4. Executar testes (opcional)
     - name: Run tests
