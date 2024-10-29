@@ -29,15 +29,15 @@ jobs:
 
     # 3. Restaurar pacotes
     - name: Restore project dependencies
-      run: dotnet restore ./AuthApi/AuthApi.sln
+      run: dotnet restore AuthApi.sln
 
     # 4. Compilar o projeto
     - name: Build project
-      run: dotnet build ./AuthApi/AuthApi.sln -c Release
+      run: dotnet build AuthApi.sln -c Release
 
     # 5. Executar testes
     - name: Run tests
-      run: dotnet test ./AuthApi/AuthApi.sln --verbosity normal
+      run: dotnet test AuthApi.sln --verbosity normal
 
     # 6. Configurar o Docker Buildx
     - name: Set up Docker Buildx
