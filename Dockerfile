@@ -3,12 +3,10 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copiar o arquivo .sln e os arquivos de projeto para o diretório de build
-COPY GerenciamentoAPI.sln ./
-COPY Api/Api.csproj ./Api/
-COPY Application/Application.csproj ./Application/
-COPY Domain/Domain.csproj ./Domain/
-COPY Infra.Data/Infra.Data.csproj ./Infra.Data/
-COPY Infra.Repositories/Infra.Repositories.csproj ./Infra.Repositories/
+COPY AuthApi.sln ./
+COPY AuthApi/AuthApi.csproj ./Api/
+COPY Bussines/Bussines.csproj ./Bussines/
+COPY Data/Data.csproj ./Data/
 
 # Restaurar dependências
 RUN dotnet restore
