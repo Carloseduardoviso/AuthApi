@@ -12,9 +12,11 @@ namespace Helpers.Extensions
         public static IServiceCollection AddScopeds(this IServiceCollection services)
         {
             services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IUsuarioSistemaService, UsuarioSistemaService>();
             services.AddScoped<IUnitOfWorkService, UnitOfWorkService>();
 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IUsuarioSistemaRepository, UsuarioSistemaRepository>();
             services.AddScoped<IUnitOfWorkRepository, UnitOfWorkRepository>();
 
             return services;
