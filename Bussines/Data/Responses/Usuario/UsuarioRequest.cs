@@ -2,6 +2,6 @@
 
 namespace Bussines.Data.Responses.Usuario
 {
-    public record UsuarioResponse(Guid UsuarioId, string NomeCompleto, string Telefone, string CPF, string Email, string Senha, TipoPermissao TipoPermissao);
+    public record UsuarioResponse(Guid UsuarioId, string NomeCompleto, string Telefone, string CPF, string Email, TipoPermissao TipoPermissao);
 
 }
