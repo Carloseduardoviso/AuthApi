@@ -7,7 +7,7 @@ using Bussines.Data.Responses;
 using Bussines.Data.Responses.Usuario;
 using Bussines.Repositories;
 using Bussines.Services.Interfaces;
-using Custom_Identity.Helpers.Custons;
+using Bussines.Helpers.Custons;
 using Microsoft.Extensions.Configuration;
 using System.Linq.Expressions;
 
@@ -53,7 +53,6 @@ namespace Bussines.Services
                 usuarioExiste.Telefone,
                 usuarioExiste.CPF,
                 usuarioExiste.Email,
-                usuarioExiste.Senha,
                 usuarioExiste.TipoPermissao
                 );
 
